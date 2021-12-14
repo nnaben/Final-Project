@@ -17,7 +17,7 @@ _C:\GITHUB\Final-Project\Screenshots\nmap scan
 
 This scan identifies the services below as potential points of entry:
 
-Target 1
+**Target 1**
 
 Port 22/tcp open ssh
 Port 80/tcp open http
@@ -26,15 +26,16 @@ Port 139/tcp open netbios-ssn
 Port 445/tcp open netbios-ssn
 Target 1
 
-Weak user passwords
+**Weak user passwords**
 User password hashes not salted – WordPress dbase
 User enumeration – WordPress
 Misconfiguration of User Privileges/privilege escalation
 
-Using the command wpscan --url http://192.168.1.110/wordpress eu.  This is known as user enumeration -used by attackers to get usernames of WordPress-sites. Users found were Michael and Steven
+Using the command wpscan --url http://192.168.1.110/wordpress eu.  This is known as user enumeration -used by attackers to get usernames of WordPress-sites. 
+Users found were Michael and Steven
 
  
-Exploitation
+**Exploitation**
 With Michael as the user name and simple guess of common password was made (user: Michael,  password: Michael).  This guess was successful using ssh:
 
 ssh michael@192.168.1.110
@@ -46,7 +47,7 @@ Using the command nano  service.html, flag1 hash value was revealed.
 
 Flag1 :  b9bbcb33ellb80be759c4e844862482d
 
-COMMAND:
+**COMMAND**:
 ssh Michael @192.168.1.110
 psword: Michael
 cd /         to get to root directory
@@ -58,7 +59,7 @@ OR   Alternatively cat service.html | grep flag* still had the flag1 retrieved
 
 Logged in as Michael, flag2.txt was retrieved using directory traversal as in flag1 above 
 
-COMMAND:
+**COMMAND:**
 ssh Michael @192.168.1.110
 password: Michael
 cd /      
@@ -153,7 +154,7 @@ There are two vulnerable vms in this network namely Target 1 and Target 2
 The target of this attack was: Target 1 (192.168.1.110).
 Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are possible ports of entry for attackers. As such, the following alerts have been implemented:
 
-Monitoring the Targets
+**Monitoring the Targets**
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 ALERTS:
 1. Excessive HTTP Errors
@@ -186,24 +187,26 @@ Each alert above pertains to a specific vulnerability/exploit. Recall that alert
 The logs and alerts generated during the assessment suggest that this network is susceptible to several active threats, identified by the alerts above. In addition to watching for occurrences of such threats, the network should be hardened against them. The Blue Team suggests that IT implement the fixes below to protect the network:
 
 Vulnerability 1 : HTTP  ERRORS
-Patch:  
-Hardening WordPress
-Regular updates should be made with apt-get
-Security plugins like wordfence could be installed
+**Patch:**  
+ Hardening WordPress
+ Regular updates should be made with apt-get
+ Security plugins like wordfence could be installed
 Unused features should be disabled to minimize open doors for attack
-Wordpress admin logins should be removed from public access
-Why It Works: 
-Regular updates will patch some of the exploits/vulnerabilities
-Security plugs can scan for malicious codes.
-It can also provide firewall for tto block harmful traffic
-Removal of admin logins from public access reduces attack surface
-Disabling unused features reduces attack surface.
+ Wordpress admin logins should be removed from public access
+
+**Why It Works**: 
+ Regular updates will patch some of the exploits/vulnerabilities
+ Security plugs can scan for malicious codes.
+ It can also provide firewall for tto block harmful traffic
+ Removal of admin logins from public access reduces attack surface
+ Disabling unused features reduces attack surface.
 
 Vulnerability 2:   REQUEST SIZE MONITOR  
 Patch: 
  Distributed denial of service (DDOS), code injection and cross site scripting should all be hardened
 HTTP request limit on the web server should be set with regards to the length of querying string, and request size.
 Input validated should be implemented.
+
 Why It Works:
 When the limit set is reached, errors will occur thereby creating rejection of the request
 Input validation prevents malicious attacks from non-human agents.
@@ -212,6 +215,7 @@ Vulnerability 3:  CPU USAGE MONITOR
 Patch:  Malware /virus hardening
 Strong antivirus programs should be installed and updated 
 Host based Intrusion Detection System (HIDS) can be installed
+
 Why It Works: 
 Strong antiviruses scan and remove all malicious codes that are usurping the system resources
 HIDS monitors and alerts of any malicious traffic into the system 
