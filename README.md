@@ -1,7 +1,7 @@
 # Final-Project
 Offensive/Defensive/Network Analysis
 
-Red Team: Summary of Operations
+**Red Team: Summary of Operations**
 
 Exposed Services
 Critical Vulnerabilities
@@ -285,7 +285,6 @@ OS version: windows 10 64bit
  
 Used filter:  http.request and !(ssdp) 
  
-
 2.	Which torrent file did the user download? 
 [Full request URI: http://www.publicdomaintorrents.com/bt/btdownload.php?type=torrent&file=Betty_Boop_Rhythm_on_the_Reservation.avi.torrent]
 Filter:  ip.addr==10.0.0.201 and (http.request.full_uri contains ".torrent")
