@@ -31,7 +31,7 @@ User password hashes not salted – WordPress dbase
 User enumeration – WordPress
 Misconfiguration of User Privileges/privilege escalation
 
-Using the command wpscan --url http://192.168.1.110/wordpress eu.  This is known as user enumeration -used by attackers to get usernames of WordPress-sites. 
+Using the command wpscan --url http://192.168.1.110/wordpress.eu  This is known as user enumeration -used by attackers to get usernames of WordPress-sites. 
 Users found were Michael and Steven
 
  
